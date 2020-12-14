@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main()
+{
+	char ch;
+	int num;
+	double i, j;
+	while(1)
+	{
+		printf("请输入式子：");
+		scanf("%lf %c %lf", &i, &ch, &j);
+		num = ch;
+		switch (num)
+		{
+		case 43:
+			printf("结果是: %0.2lf\n", i + j);
+			break;
+		case 45:
+			printf("结果是: %0.2lf\n", i - j);
+			break;
+		case 42:
+			printf("结果是: %0.2lf\n", i * j);
+			break;
+		case 47:
+			if (j == 0)
+				printf("很遗憾，除数不能为零!\n");
+			else
+				printf("结果是: %0.2lf\n", i / j);
+			break;
+		default:
+			break;
+		}
+	}
+}
