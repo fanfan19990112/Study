@@ -1,34 +1,42 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
-	char ch;
-	int num;
-	double i, j;
-	while(1)
-	{
-		printf("请输入式子：");
-		scanf("%lf %c %lf", &i, &ch, &j);
-		num = ch;
-		switch (num)
-		{
-		case 43:
-			printf("结果是: %0.2lf\n", i + j);
-			break;
-		case 45:
-			printf("结果是: %0.2lf\n", i - j);
-			break;
-		case 42:
-			printf("结果是: %0.2lf\n", i * j);
-			break;
-		case 47:
-			if (j == 0)
-				printf("很遗憾，除数不能为零!\n");
-			else
-				printf("结果是: %0.2lf\n", i / j);
-			break;
-		default:
-			break;
-		}
-	}
+        float op1, op2;
+        char ch;
+        float result;
+        bool invalid = false;
+
+        printf("请输入式子：");
+        scanf("%f %c %f", &op1, &ch, &op2);
+
+        switch (ch)
+        {
+                case '-': op2 = -op2; // no break
+                case '+': result = op1 + op2; break;
+                case '*': result = op1 * op2; break;
+                case '/':
+                        if (op2 != 0)
+                        {
+                                result = op1 / op2;
+                                break;
+                        }
+                        else
+                        {
+                                invalid = true;
+                                break;
+                        }
+        }
+
+        if (invalid)
+        {
+                printf("除数不能为零！\n");
+        }
+        else
+        {
+                printf("结果是：%.2f\n", result);
+        }
+
+        return 0;
 }
